@@ -1,0 +1,15 @@
+export 'api/hotel_resource_api.dart';
+export 'gtd_hotel_endpoint.dart';
+export 'models/json_models/hotel_location_address.dart';
+export 'models/json_models/hotel_page.dart';
+export 'models/json_models/hotel_product.dart';
+export 'models/reponse/gtd_hotel_checkout_rs.dart';
+export 'models/reponse/gtd_hotel_draft_booking_rs.dart';
+export 'models/reponse/gtd_hotel_filter_options_rs.dart';
+export 'models/reponse/gtd_hotel_location_search_rs.dart';
+export 'models/reponse/gtd_hotel_popular_rs.dart';
+export 'models/reponse/gtd_hotel_search_all_rates_rs.dart';
+export 'models/reponse/gtd_hotel_search_result_rs.dart';
+export 'models/request/gtd_hotel_checkout_rq.dart';
+export 'models/request/gtd_hotel_search_all_rate_rq.dart';
+export 'models/request/gtd_hotel_search_rq.dart';

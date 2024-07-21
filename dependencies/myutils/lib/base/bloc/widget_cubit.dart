@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:myutils/constants/api_constant.dart';
 import 'package:myutils/data/cache_helper/cache_helper.dart';
@@ -34,23 +33,23 @@ abstract class WidgetCubit<State> extends Cubit<State> {
 
   void showToast(
     String? message, {
-    Toast toastLength = Toast.LENGTH_LONG,
-    ToastGravity toastGravity = ToastGravity.CENTER,
+    // Toast toastLength = Toast.LENGTH_LONG,
+    // ToastGravity toastGravity = ToastGravity.CENTER,
     int timeInSecForIosWeb = 1,
     double? fontSize = 12,
     Color? backgroundColor,
     Color? textColor,
     bool webShowClose = false,
   }) {
-    if ((message?.isNotEmpty ?? false) == true) {
-      Fluttertoast.showToast(
-          msg: message!,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          backgroundColor: backgroundColor,
-          textColor: textColor,
-          fontSize: fontSize);
-    }
+    // if ((message?.isNotEmpty ?? false) == true) {
+    //   Fluttertoast.showToast(
+    //       msg: message!,
+    //       toastLength: Toast.LENGTH_SHORT,
+    //       gravity: ToastGravity.CENTER,
+    //       backgroundColor: backgroundColor,
+    //       textColor: textColor,
+    //       fontSize: fontSize);
+    // }
   }
 
   void showErrorToast(String? message) {
@@ -62,8 +61,8 @@ abstract class WidgetCubit<State> extends Cubit<State> {
 
 }
   void showNormalToast(String? message) {
-    showToast(message,
-        backgroundColor: MyColors.steelGrey, toastGravity: ToastGravity.BOTTOM);
+    // showToast(message,
+    //     backgroundColor: MyColors.steelGrey, toastGravity: ToastGravity.BOTTOM);
   }
 
   //show dialog with title, content and two button

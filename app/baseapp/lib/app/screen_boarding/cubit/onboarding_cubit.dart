@@ -26,19 +26,13 @@ class OnboardingCubit extends WidgetCubit<OnboardingState> {
 
   callApiOnboarding() async {
     try {
-      final onBoarding =
-          await fetchApi<OnBoardingOutput>(_newsEventsRepository.getOnboarding);
+      final onBoarding = await fetchApi(_newsEventsRepository.getOnboarding);
       if (kDebugMode) {
-        print('onBoarding ${onBoarding?.data?.length ?? 0}');
+        print('onBoarding ${onBoarding.data?.length ?? 0}');
       }
-      if (onBoarding?.statusCode == null) {
-        // localeManager.setBoolValue(StorageKeys.onBoarding, true);
-        // AppNavigator.push(AppRouter.welcome);
-      }
-      // emit(state.copyWith(onBoardingOutput: onBoarding));
+
     } catch (e) {
-      // localeManager.setBoolValue(StorageKeys.onBoarding, true);
-      // AppNavigator.push(AppRouter.welcome);
+
     }
   }
 

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+// import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:myutils/constants/api_constant.dart';
 import 'package:myutils/data/cache_helper/cache_helper.dart';
@@ -76,8 +77,8 @@ abstract class WidgetCubit<State> extends Cubit<State> {
   }
 
   //Function for call api, handle data loading, data error
-  Future<OutputType?> fetchApi<OutputType extends BaseOutput>(
-      Function() apiFunction,
+  Future<T> fetchApi<T>(
+      Future<T> Function() apiFunction,
       {bool showLoading = true,
       bool loadFromCache = false,
       bool checkInternetBeforeFetchingData = true,
@@ -107,15 +108,16 @@ abstract class WidgetCubit<State> extends Cubit<State> {
 
     //check loading, show loading before fetch api
     if (showLoading && hasInternetConnection) {
-      EasyLoading.show(
-        status: 'loading...',
-        maskType: EasyLoadingMaskType.none,
-      );
+      GtdLoading.show();
+      // EasyLoading.show(
+      //   status: 'loading...',
+      //   maskType: EasyLoadingMaskType.none,
+      // );
     }
 
     try {
       // ignore: avoid_dynamic_calls
-      final response = await apiFunction.call() as OutputType?;
+      final response = await apiFunction.call();
       handleApiResponse(response,
           showLoading: showLoading,
           showToastError: showToastError,
@@ -123,7 +125,8 @@ abstract class WidgetCubit<State> extends Cubit<State> {
       return response;
     } catch (err) {
       if (showLoading) {
-        EasyLoading.dismiss();
+        GtdLoading.hide();
+        // EasyLoading.dismiss();
       }
       handleApiError(err, showToastException);
       return Future.value();
@@ -173,14 +176,15 @@ abstract class WidgetCubit<State> extends Cubit<State> {
     }
   }
 
-  Future<void> handleApiResponse<OutputType extends BaseOutput>(
-      OutputType? response,
+  Future<void> handleApiResponse(
+      dynamic response,
       {bool showLoading = true,
       bool showToastError = true,
       bool showToastException = true}) async {
     //hide loading after receive api response
     if (showLoading) {
-      EasyLoading.dismiss();
+      GtdLoading.hide();
+      // EasyLoading.dismiss();
     }
 
     if (response?.statusCode == ApiStatusCode.tokenExpired) {
@@ -200,5 +204,47 @@ abstract class WidgetCubit<State> extends Cubit<State> {
     if (response?.statusCode != ApiStatusCode.success && showToastError) {
       // response?.message?.let(showNormalToast);
     }
+  }
+}
+class GtdLoading {
+  // late BuildContext context;
+  bool isLoading = false;
+  // GtdLoading(this.context);
+  GtdLoading();
+
+  //Show loading
+  Future<void> showLoading(BuildContext context) async {
+    isLoading = true;
+    return await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const SimpleDialog(
+          elevation: 0.0,
+          backgroundColor: Colors.transparent, // can change this to your prefered color
+          children: <Widget>[
+            Center(
+              child: CircularProgressIndicator(),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  //Hide loading
+  Future<void> hideLoading(BuildContext context) async {
+    if (isLoading) {
+      isLoading = false;
+      Navigator.of(context).pop();
+    }
+  }
+
+  static Future<void> show() {
+    return EasyLoading.show(indicator: const CircularProgressIndicator(), maskType: EasyLoadingMaskType.custom);
+  }
+
+  static Future<void> hide() {
+    return EasyLoading.dismiss(animation: true);
   }
 }

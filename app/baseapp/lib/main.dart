@@ -1,19 +1,24 @@
 import 'package:baseapp/router/my_router.dart';
 import 'package:flutter/material.dart';
-import 'package:myutils/base/page/wrapped_app.dart';
-import 'package:myutils/constants/app_const.dart';
-import 'package:myutils/data/configuration/gtd_app_config.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myutils/configofmypt/config/app_config.dart';
+import 'package:myutils/configofmypt/config/day_one_application.dart';
+import 'package:myutils/configofmypt/config/injection.dart';
+import 'package:myutils/utils/app_bloc_observer/app_bloc_observer.dart';
 
-void main() {
-  final wrappedApp = WrappedApp.shared;
-  AppConst.shared.themeMode = ThemeMode.light;
-  // await Firebase.initializeApp(options: Platform.isAndroid ?  DefaultFirebaseOptions.android : DefaultFirebaseOptions.ios);
-  final app = wrappedApp.createWrappedApp(
-    router,
-    "Gotadi b2c",
-    appScheme: MyAppScheme.uatB2C,
-  );
+Future<void> main() async {
+  ///
+  // AppConst.shared.appScheme = MyAppScheme.uatB2C;
+  WidgetsFlutterBinding.ensureInitialized();
+  await Future.wait([
+    initializeDependencies(Flavor.staging),
+  ]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  Bloc.observer = AppBlocObserver();
+  runApp(DayOneApplication(appRouter: myRouter,));
 
-  runApp(app);
-  // runApp(const MyApp());
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myutils/data/configuration/gtd_app_config.dart';
 import 'package:myutils/utils/gtd_widgets/gtd_tuple.dart';
 
 extension CustomColors on Colors {
@@ -21,71 +20,5 @@ extension CustomColors on Colors {
 
   static const Color dividerColor = Color(0xFFF9FAFB);
 
-  static MaterialColor mainAppColor({required GtdAppSupplier supplier, ThemeMode themeMode = ThemeMode.system}) {
-    switch (supplier) {
-      case GtdAppSupplier.b2c:
-        return CustomColors.mainGreen;
-      case GtdAppSupplier.vib:
-        return themeMode == ThemeMode.dark ? CustomColors.mainBlue : CustomColors.mainOrange;
-      default:
-        return CustomColors.mainGreen;
-    }
-  }
 
-  static Color lightMainAppColor({required GtdAppSupplier supplier, ThemeMode themeMode = ThemeMode.system}) {
-    switch (supplier) {
-      case GtdAppSupplier.b2c:
-        return CustomColors.mainGreen.shade50;
-      case GtdAppSupplier.vib:
-        return themeMode == ThemeMode.dark ? CustomColors.mainBlue.shade50 : CustomColors.mainOrange.shade50;
-      default:
-        return CustomColors.mainGreen.shade50;
-    }
-  }
-
-  static Color mediumMainAppColor({required GtdAppSupplier supplier, ThemeMode themeMode = ThemeMode.system}) {
-    switch (supplier) {
-      case GtdAppSupplier.b2c:
-        return CustomColors.mainGreen.shade100;
-      case GtdAppSupplier.vib:
-        return themeMode == ThemeMode.dark ? CustomColors.mainBlue.shade100 : CustomColors.mainOrange.shade100;
-      default:
-        return CustomColors.mainGreen.shade100;
-    }
-  }
-
-  static Color headerAppColor({required GtdAppSupplier supplier, ThemeMode themeMode = ThemeMode.system}) {
-    switch (supplier) {
-      case GtdAppSupplier.b2c:
-        return CustomColors.mainOrange;
-      case GtdAppSupplier.vib:
-        return themeMode == ThemeMode.dark ? CustomColors.mainBlue : CustomColors.mainOrange;
-      default:
-        return CustomColors.mainOrange;
-    }
-  }
-
-  static Color lightHeaderAppColor({required GtdAppSupplier supplier, ThemeMode themeMode = ThemeMode.system}) {
-    switch (supplier) {
-      case GtdAppSupplier.b2c:
-        return CustomColors.mainOrange.shade50;
-      case GtdAppSupplier.vib:
-        return themeMode == ThemeMode.dark ? CustomColors.mainBlue.shade50 : CustomColors.mainOrange.shade50;
-      default:
-        return CustomColors.mainOrange.shade50;
-    }
-  }
-
-  static Tuple<Color, Color> gradientColors(
-      {required GtdAppSupplier supplier, ThemeMode themeMode = ThemeMode.system}) {
-    switch (supplier) {
-      case GtdAppSupplier.b2c:
-        return CustomColors.gradientGreen;
-      case GtdAppSupplier.vib:
-        return themeMode == ThemeMode.dark ? CustomColors.gradientBlue : CustomColors.gradientOrange;
-      default:
-        // return Tuple(item1: CustomColors.mainGreen, item2: CustomColors.mainGreen);
-        return CustomColors.gradientGreen;
-    }
-  }
 }

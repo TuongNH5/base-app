@@ -1,14 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:myutils/constants/app_const.dart';
 import 'package:myutils/helpers/extension/string_extension.dart';
 import 'package:lottie/lottie.dart';
-
+// common('common_resource'),
+// gotadiB2C('my_resource'),
+// gotadiB2B('my_resource'),
+// vib('vib_resource');
+const String myResource = 'my_resource';
+const String commonResource = 'common_resource';
 extension GtdImage on Image {
+
+
+
   static Image imgFromSupplier({required String assetName, double? width, double? height, BoxFit? fit}) {
     return Image.asset(
-      GtdString.pathForAsset(AppConst.shared.supplierResource, assetName),
+      GtdString.pathForAsset(myResource, assetName),
       width: width,
       height: height,
       fit: fit,
@@ -29,7 +36,7 @@ extension GtdImage on Image {
   static Widget svgFromSupplier(
       {required String assetName, double? width, double? height, BoxFit fit = BoxFit.contain, Color? color}) {
     return SvgPicture.asset(
-      GtdString.pathForAsset(AppConst.shared.supplierResource, assetName),
+      GtdString.pathForAsset(myResource, assetName),
       width: width,
       height: height,
       fit: fit,
@@ -39,7 +46,7 @@ extension GtdImage on Image {
 
   static Image imgFromCommon({required String assetName, double? width, double? height, BoxFit? fit}) {
     return Image.asset(
-      GtdString.pathForAsset(AppConst.shared.commonResource, assetName),
+      GtdString.pathForAsset(commonResource, assetName),
       width: width,
       height: height,
       fit: fit,
@@ -49,7 +56,7 @@ extension GtdImage on Image {
   static Widget svgFromCommon(
       {required String assetName, double? width, double? height, BoxFit fit = BoxFit.contain, Color? color}) {
     return SvgPicture.asset(
-      GtdString.pathForAsset(AppConst.shared.commonResource, assetName),
+      GtdString.pathForAsset(commonResource, assetName),
       width: width,
       height: height,
       fit: fit,
@@ -59,7 +66,7 @@ extension GtdImage on Image {
 
   static Image giftFromSupplier({required String assetName, BoxFit? boxFit}) {
     return Image.asset(
-      GtdString.pathForAsset(AppConst.shared.supplierResource, assetName),
+      GtdString.pathForAsset(myResource, assetName),
       gaplessPlayback: true,
       fit: boxFit,
     );
@@ -67,7 +74,7 @@ extension GtdImage on Image {
 
   static Image giftFromCommon({required String assetName, BoxFit? boxFit}) {
     return Image.asset(
-      GtdString.pathForAsset(AppConst.shared.commonResource, assetName),
+      GtdString.pathForAsset(commonResource, assetName),
       gaplessPlayback: true,
       fit: boxFit,
     );
@@ -145,7 +152,7 @@ extension GtdImage on Image {
       AnimationController? controller,
       bool? repeat,
       bool? reverse}) {
-    return Lottie.asset(GtdString.pathForAsset(AppConst.shared.supplierResource, assetName),
+    return Lottie.asset(GtdString.pathForAsset(myResource, assetName),
         controller: controller, repeat: repeat, reverse: reverse, width: width, height: height, fit: fit);
   }
 
@@ -157,7 +164,7 @@ extension GtdImage on Image {
       AnimationController? controller,
       bool? repeat,
       bool? reverse}) {
-    return Lottie.network(GtdString.pathForAsset(AppConst.shared.supplierResource, assetName),
+    return Lottie.network(GtdString.pathForAsset(myResource, assetName),
         controller: controller, repeat: repeat, reverse: reverse, fit: fit, width: width, height: height);
   }
 }

@@ -1,0 +1,32 @@
+/// Created by Nguyen Huu Tu on 28/03/2022.
+
+enum StorageKeys {
+  baseUrl,
+  accessToken,
+  refreshToken,
+  cachedResourceModule,
+  email,
+  language,
+  userToken,
+  onBoarding,
+  isPassLogin,
+  ticketId,
+  starRating,
+  goodSuggestedComment,
+  badSuggestedComment,
+  ticketStorage,
+  appConfig,
+  userInfo,
+  firstTimeLogin,
+  homeFeature,
+  appVersion,
+  firstTimeRequestCameraPermission,
+  toolTipEvaluateTicketHomeActived,
+  dateTimeNewEvent,
+  trackingBanners,
+  trackingLightBox,
+  trackingNotification,
+  listSearchPtst,
+  listSearchRequestPtst,
+  contractNo
+}

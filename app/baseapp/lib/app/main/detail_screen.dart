@@ -17,7 +17,7 @@ class DetailsScreen extends StatelessWidget {
             Text('ID: $id'),
             CupertinoButton(
               child: const Text('Back'),
-              onPressed: () => context.pop(),
+              onPressed: () => context.pop('2'),
             ),
           ],
         ),

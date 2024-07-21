@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:myutils/helpers/extension/date_time_extension.dart';
 
 extension GtdString on String {
   // packages/resource/vib_assets/images/logo_b2c.svg
@@ -82,12 +81,5 @@ extension GtdStringNull on String? {
     }
   }
 
-  String? formatDateStringFull(String outputPattern) {
-    if (isNullOrEmpty()) {
-      return null;
-    } else {
-      final date = DateTime.parse(this!);
-      return date.localDate(pattern1);
-    }
-  }
+
 }

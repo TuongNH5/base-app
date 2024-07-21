@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myutils/data/repositories/gtd_repositories/common_enum/gtd_final_booking_status.dart';
 import 'package:myutils/helpers/extension/image_extension.dart';
 import 'package:path/path.dart' as p;
 
-extension GtdAppIcon on Icon {
+extension MyAppIcon on Icon {
   static Widget iconNamedSupplier({
     required String iconName,
     double? width,
@@ -68,25 +67,7 @@ extension GtdAppIcon on Icon {
         assetName: "assets/icons/radio/radio-checkbox-active.svg");
   }
 
-  static Widget iconBookingStatus({required DisplayBookingStatus status}) {
-    switch (status) {
-      case DisplayBookingStatus.success:
-        return GtdImage.svgFromSupplier(
-            assetName: "assets/icons/status/booking-status-success.svg");
-      case DisplayBookingStatus.failed:
-        return GtdImage.svgFromSupplier(
-            assetName: "assets/icons/status/booking-status-failed.svg");
-      case DisplayBookingStatus.pending:
-        return GtdImage.svgFromSupplier(
-            assetName: "assets/icons/status/booking-status-pending.svg");
-      case DisplayBookingStatus.booked:
-        return GtdImage.svgFromSupplier(
-            assetName: "assets/icons/status/booking-status-booked.svg");
-      default:
-        return GtdImage.svgFromSupplier(
-            assetName: "assets/icons/status/booking-status-failed.svg");
-    }
-  }
+
 
   static Widget iconInsurance({required String status}) {
     return GtdImage.svgFromSupplier(

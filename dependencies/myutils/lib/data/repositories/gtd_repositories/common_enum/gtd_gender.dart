@@ -1,1 +1,0 @@
-enum GtdGender { male, female }
